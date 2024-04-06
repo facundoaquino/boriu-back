@@ -93,10 +93,12 @@ export class EmailService {
     </body>
     </html>`;
     const transporter = nodemailer.createTransport({
-      service: this.configService.get('EMAIL_SERVICE_NAME'),
+      host: this.configService.get('EMAIL_HOST'),
+      port: 465,
+      secure: true,
       auth: {
         user: this.configService.get('EMAIL_ENTERPRISE_FROM'),
-        pass: this.configService.get('EMAIL_2FA_KEY'),
+        pass: this.configService.get('EMAIL_PASS'),
       },
     });
 
