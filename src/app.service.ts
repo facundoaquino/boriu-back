@@ -37,7 +37,11 @@ export class AppService {
     return new Promise((resolve, reject) => {
       const storage = new Storage({
         projectId: this.configService.get('BUCKET_NAME'),
-        keyFilename: this.configService.get('KEY_FILE_NAME'),
+        credentials: {
+          client_email: this.configService.get('STORAGE_CLIENT_EMAIL'),
+          client_id: this.configService.get('STORAGE_CLIENT_ID'),
+          private_key: this.configService.get('STORAGE_PRIVATE_KEY'),
+        },
       });
       const bucket = storage.bucket(this.configService.get('BUCKET_NAME'));
 

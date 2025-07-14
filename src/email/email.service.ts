@@ -94,8 +94,8 @@ export class EmailService {
     </html>`;
     const transporter = nodemailer.createTransport({
       host: this.configService.get('EMAIL_HOST'),
-      port: 465,
-      secure: true,
+      port: 587,
+      secure: false,
       auth: {
         user: this.configService.get('EMAIL_ENTERPRISE_FROM'),
         pass: this.configService.get('EMAIL_PASS'),
